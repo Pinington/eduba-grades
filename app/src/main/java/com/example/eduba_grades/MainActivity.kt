@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
             "Informatique et Reseaux",
             "Mecanique",
             "Textiles et Fibres"
-        );
+        )
 
         setContent {
             EdubaGradesTheme {
