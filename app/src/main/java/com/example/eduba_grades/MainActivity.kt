@@ -37,13 +37,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val listSpe = listOf(
-            "Automatique & Systemes Embarques",
-            "Genie Industriel",
-            "Informatique et Reseaux",
-            "Mecanique",
-            "Textiles et Fibres"
-        )
+        val pv = PageViewer();
 
         setContent {
             EdubaGradesTheme {
@@ -55,7 +49,7 @@ class MainActivity : ComponentActivity() {
 
                     Column {
                         BannerItem()
-                        SpeView(listSpe)
+                        SpeView()
                     }
 
                 }
@@ -97,48 +91,5 @@ fun BannerItem() {
             modifier = Modifier
                 .padding(20.dp, 50.dp, 20.dp, 20.dp)
         )
-    }
-}
-
-@Composable
-fun SpeView(spe: List<String>) {
-    LazyColumn (
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .padding(0.dp, 18.dp)
-            .fillMaxWidth()
-    ) {
-        items(spe) {
-            Card (
-                modifier = Modifier
-                    .padding(6.dp)
-                    .fillMaxWidth(0.95F)
-            ) {
-                Text (
-                    text = it,
-                    modifier = Modifier
-                        .padding(12.dp)
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun SemView(sem: Int = 6) {
-    LazyColumn {
-        items(sem) {
-            Card (
-                modifier = Modifier
-                    .padding(6.dp)
-                    .fillMaxWidth()
-            ) {
-                Text (
-                    text = "Semestre ${it + 1}",
-                    modifier = Modifier
-                        .padding(12.dp)
-                )
-            }
-        }
     }
 }
