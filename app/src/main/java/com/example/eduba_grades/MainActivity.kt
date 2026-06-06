@@ -19,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -102,13 +103,16 @@ fun BannerItem() {
 @Composable
 fun SpeView(spe: List<String>) {
     LazyColumn (
-        modifier = Modifier.padding(0.dp, 18.dp)
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .padding(0.dp, 18.dp)
+            .fillMaxWidth()
     ) {
         items(spe) {
             Card (
                 modifier = Modifier
                     .padding(6.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(0.95F)
             ) {
                 Text (
                     text = it,
