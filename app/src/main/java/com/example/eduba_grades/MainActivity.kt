@@ -53,6 +53,7 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
+
                     Column {
                         BannerItem()
                         SpeView(listSpe)
@@ -104,6 +105,25 @@ fun BannerItem() {
 }
 
 @Composable
+fun SpeView(spe: List<String>) {
+    LazyColumn {
+        items(spe) {
+            Card (
+                modifier = Modifier
+                    .padding(6.dp)
+                    .fillMaxWidth()
+            ) {
+                Text (
+                    text = it,
+                    modifier = Modifier
+                        .padding(12.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
 fun SemView(sem: List<String>) {
     LazyColumn {
         items(sem) {
@@ -114,25 +134,6 @@ fun SemView(sem: List<String>) {
             ) {
                 Text (
                     text = "Semestre $it",
-                    modifier = Modifier
-                        .padding(12.dp)
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun UEView(ue: List<String>) {
-    LazyColumn {
-        items(ue) {
-            Card (
-                modifier = Modifier
-                    .padding(6.dp)
-                    .fillMaxWidth()
-            ) {
-                Text (
-                    text = it,
                     modifier = Modifier
                         .padding(12.dp)
                 )
