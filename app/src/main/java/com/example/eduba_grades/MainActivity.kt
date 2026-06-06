@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -81,28 +83,27 @@ fun GreetingPreview() {
 fun BannerItem() {
     Card(
         shape = RectangleShape,
-        colors = CardColors(
-            Color.Black,
-            Color.Black,
-            Color.Red,
-            Color.Gray),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(0.dp, 30.dp)
     ) {
         Text(
             text = "Eduba",
             fontSize = 24.sp,
             color = Color.White,
             modifier = Modifier
-                .padding(20.dp)
+                .padding(20.dp, 50.dp, 20.dp, 20.dp)
         )
     }
 }
 
 @Composable
 fun SpeView(spe: List<String>) {
-    LazyColumn {
+    LazyColumn (
+        modifier = Modifier.padding(0.dp, 18.dp)
+    ) {
         items(spe) {
             Card (
                 modifier = Modifier
