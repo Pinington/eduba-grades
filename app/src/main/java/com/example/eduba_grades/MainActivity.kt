@@ -42,10 +42,6 @@ class MainActivity : ComponentActivity() {
             "Textiles et Fibres"
         );
 
-        val listSem = listOf(
-            1, 2, 3, 4, 5, 6
-        )
-
         setContent {
             EdubaGradesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -124,7 +120,7 @@ fun SpeView(spe: List<String>) {
 }
 
 @Composable
-fun SemView(sem: List<String>) {
+fun SemView(sem: Int = 6) {
     LazyColumn {
         items(sem) {
             Card (
@@ -133,7 +129,7 @@ fun SemView(sem: List<String>) {
                     .fillMaxWidth()
             ) {
                 Text (
-                    text = "Semestre $it",
+                    text = "Semestre ${it + 1}",
                     modifier = Modifier
                         .padding(12.dp)
                 )
