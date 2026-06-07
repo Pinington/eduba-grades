@@ -22,18 +22,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 val listSpe : List<String> = listOf(
+    // Don't change ordering because enum depends on it
+    // Add new spe at end
     "Automatique & Systemes Embarques",
     "Genie Industriel",
     "Informatique et Reseaux",
     "Mecanique",
     "Textiles et Fibres"
 )
-
-enum class Screen {
-    SPECIALITE,
-    SEMESTRE,
-    MATIERES
-}
 
 enum class Spe (val value : Int) {
     // https://stackoverflow.com/questions/53523948/how-do-i-create-an-enum-from-an-int-in-kotlin
@@ -47,6 +43,12 @@ enum class Spe (val value : Int) {
     companion object {
         fun fromInt(value: Int) = entries.first { it.value == value }
     }
+}
+
+enum class Screen {
+    SPECIALITE,
+    SEMESTRE,
+    MATIERES
 }
 
 @Composable
