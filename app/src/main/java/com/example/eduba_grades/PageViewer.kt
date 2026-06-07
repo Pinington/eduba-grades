@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -18,22 +19,30 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -203,6 +212,8 @@ fun SemSelectView(sem: Int = 6, onSemesterClick: (Int) -> Unit) {
 
 @Composable
 fun DisplaySubjects(unites : List<UniteEnseignement>) {
+    val gradeStates = remember { mutableStateMapOf<String, String>() }
+
     LazyColumn (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -230,8 +241,13 @@ fun DisplaySubjects(unites : List<UniteEnseignement>) {
 
 
             ue.modules.forEachIndexed { index, subject ->
+
                 val color = if (index % 2 == 0) Color.Gray else Color.DarkGray
-                Row (
+
+                val key = subject.name
+                val gradeQuery = gradeStates[key] ?: ""
+
+                Row(
                     horizontalArrangement = Arrangement.spacedBy(20.dp),
                     modifier = Modifier
                         .fillMaxWidth(0.95F)
@@ -241,22 +257,28 @@ fun DisplaySubjects(unites : List<UniteEnseignement>) {
                     Text(
                         text = subject.name,
                         fontSize = 20.sp,
-                        color = Color.White
+                        color = Color.White,
+                        lineHeight = 36.sp
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    var searchQuery by remember {mutableStateOf("")}
-                    TextField(
-                        value = searchQuery,
-                        onValueChange = {
-                            searchQuery = it
+                    BasicTextField(
+                        value = gradeQuery,
+                        onValueChange = { newValue ->
+                            if (newValue.all { it.isDigit() }) {
+                                gradeStates[key] = newValue
+                            }
                         },
+                        cursorBrush = SolidColor(Color.White),
                         singleLine = true,
+                        textStyle = TextStyle(fontSize = 20.sp, color = Color.White, textAlign = TextAlign.Center),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier
-                            .padding()
-                            .height(28.dp)
-                            .width(40.dp)
+                            .width(36.dp)
+                            .height(34.dp)
+                            .background(Color.hsl(0.1F, 0.1F, 0.08F, 0.3F))
+                            .padding(6.dp)
                     )
                 }
             }
