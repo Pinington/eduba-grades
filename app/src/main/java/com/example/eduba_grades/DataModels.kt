@@ -7,7 +7,11 @@ data class Module(
     val name: String,
     val value: Int
 )
-
+@Serializable
+data class UniteEnseignement(
+    val name: String,
+    val modules: List<Module>
+)
 @Serializable
 data class RootData(
     val ue_ase: Map<String, List<UniteEnseignement>> = emptyMap(),
