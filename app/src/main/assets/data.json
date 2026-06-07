@@ -1,0 +1,181 @@
+{
+  "ue_ir": {
+    "1": [
+      {
+        "name": "Maths Generales",
+        "modules": [
+          { "name": "Calcul Matriciel", "value": 10 },
+          { "name": "Analyse Generale", "value": 10 },
+          { "name": "Statistiques", "value": 28 },
+          { "name": "Analyse Numerique", "value": 20 },
+          { "name": "Projet", "value": 12 }
+        ]
+      },
+      {
+        "name": "Ingenieurie Objet",
+        "modules": [
+          { "name": "Java", "value": 32 },
+          { "name": "UML", "value": 24 },
+          { "name": "Projet", "value": 20 }
+        ]
+      },
+      {
+        "name": "Donnees",
+        "modules": [
+          { "name": "SGBD", "value": 28 },
+          { "name": "BI", "value": 34 }
+        ]
+      }
+    ],
+
+
+
+    "2": [
+      {
+        "name": "Maths Generales",
+        "modules": [
+          { "name": "Calcul Matriciel", "value": 10 },
+          { "name": "Analyse Generale", "value": 10 },
+          { "name": "Statistiques", "value": 28 },
+          { "name": "Analyse Numerique", "value": 20 },
+          { "name": "Projet", "value": 12 }
+        ]
+      },
+      {
+        "name": "Ingenieurie Objet",
+        "modules": [
+          { "name": "Java", "value": 32 },
+          { "name": "UML", "value": 24 },
+          { "name": "Projet", "value": 20 }
+        ]
+      },
+      {
+        "name": "Donnees",
+        "modules": [
+          { "name": "SGBD", "value": 28 },
+          { "name": "BI", "value": 34 }
+        ]
+      }
+    ],
+
+
+
+    "3": [
+      {
+        "name": "Maths Generales",
+        "modules": [
+          { "name": "Calcul Matriciel", "value": 10 },
+          { "name": "Analyse Generale", "value": 10 },
+          { "name": "Statistiques", "value": 28 },
+          { "name": "Analyse Numerique", "value": 20 },
+          { "name": "Projet", "value": 12 }
+        ]
+      },
+      {
+        "name": "Ingenieurie Objet",
+        "modules": [
+          { "name": "Java", "value": 32 },
+          { "name": "UML", "value": 24 },
+          { "name": "Projet", "value": 20 }
+        ]
+      },
+      {
+        "name": "Donnees",
+        "modules": [
+          { "name": "SGBD", "value": 28 },
+          { "name": "BI", "value": 34 }
+        ]
+      }
+    ],
+
+
+
+    "4": [
+      {
+        "name": "Maths Generales",
+        "modules": [
+          { "name": "Calcul Matriciel", "value": 10 },
+          { "name": "Analyse Generale", "value": 10 },
+          { "name": "Statistiques", "value": 28 },
+          { "name": "Analyse Numerique", "value": 20 },
+          { "name": "Projet", "value": 12 }
+        ]
+      },
+      {
+        "name": "Ingenieurie Objet",
+        "modules": [
+          { "name": "Java", "value": 32 },
+          { "name": "UML", "value": 24 },
+          { "name": "Projet", "value": 20 }
+        ]
+      },
+      {
+        "name": "Donnees",
+        "modules": [
+          { "name": "SGBD", "value": 28 },
+          { "name": "BI", "value": 34 }
+        ]
+      }
+    ],
+
+
+
+    "5": [
+      {
+        "name": "Maths Generales",
+        "modules": [
+          { "name": "Calcul Matriciel", "value": 10 },
+          { "name": "Analyse Generale", "value": 10 },
+          { "name": "Statistiques", "value": 28 },
+          { "name": "Analyse Numerique", "value": 20 },
+          { "name": "Projet", "value": 12 }
+        ]
+      },
+      {
+        "name": "Ingenieurie Objet",
+        "modules": [
+          { "name": "Java", "value": 32 },
+          { "name": "UML", "value": 24 },
+          { "name": "Projet", "value": 20 }
+        ]
+      },
+      {
+        "name": "Donnees",
+        "modules": [
+          { "name": "SGBD", "value": 28 },
+          { "name": "BI", "value": 34 }
+        ]
+      }
+    ],
+
+
+
+    "6": [
+      {
+        "name": "Maths Generales",
+        "modules": [
+          { "name": "Calcul Matriciel", "value": 10 },
+          { "name": "Analyse Generale", "value": 10 },
+          { "name": "Statistiques", "value": 28 },
+          { "name": "Analyse Numerique", "value": 20 },
+          { "name": "Projet", "value": 12 }
+        ]
+      },
+      {
+        "name": "Ingenieurie Objet",
+        "modules": [
+          { "name": "Java", "value": 32 },
+          { "name": "UML", "value": 24 },
+          { "name": "Projet", "value": 20 }
+        ]
+      },
+      {
+        "name": "Donnees",
+        "modules": [
+          { "name": "SGBD", "value": 28 },
+          { "name": "BI", "value": 34 }
+        ]
+      }
+    ]
+  }
+}

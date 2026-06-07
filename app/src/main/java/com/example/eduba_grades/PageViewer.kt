@@ -1,5 +1,6 @@
 package com.example.eduba_grades
 
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -18,6 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.log
@@ -46,6 +49,19 @@ enum class Spe (val value : Int) {
     }
 }
 
+fun getUeList(root: RootData, spe: Spe, sem: Int): List<UniteEnseignement> {
+    val ueMap = when (spe) {
+        Spe.IR -> root.ue_ir
+        Spe.ASE -> root.ue_ase
+        Spe.GI -> root.ue_gi
+        Spe.MECA -> root.ue_meca
+        Spe.TF -> root.ue_tf
+        Spe.None -> emptyMap()
+    }
+
+    return ueMap[sem.toString()] ?: emptyList()
+}
+
 enum class Screen {
     SPECIALITE,
     SEMESTRE,
@@ -64,15 +80,20 @@ fun App() {
         }
     }
 
-    var specialite by remember { mutableStateOf(Spe.None) }
-    var semestre by remember {mutableIntStateOf(0)}
+    var selectedSem by remember { mutableIntStateOf(1) }
+    var selectedSpe by remember { mutableStateOf(Spe.None) }
+
+    val context = LocalContext.current
+    val root = remember {
+        loadRootData(context)
+    }
 
     when (currentScreen) {
         Screen.SPECIALITE -> {
             SpeSelectView(
-                onSpecialityClick = { spe ->
+                onSpecialityClick = { s ->
                     currentScreen = Screen.SEMESTRE
-                    specialite = Spe.fromInt(spe)
+                    selectedSpe = Spe.fromInt(s)
                 }
             )
         }
@@ -81,13 +102,18 @@ fun App() {
             SemSelectView(
                 onSemesterClick = { sem ->
                     currentScreen = Screen.MATIERES
-                    semestre = sem
+                    selectedSem = sem
+                    Log.d(
+                        "EDUBA_DEBUG",
+                        "SelectedSpe=$selectedSpe | SelectedSem=$selectedSem"
+                    )
                 }
             )
         }
 
         Screen.MATIERES -> {
-
+            val ueList = getUeList(root, selectedSpe, selectedSem)
+            DisplaySubjects(ueList)
         }
     }
 }
@@ -106,7 +132,7 @@ fun SpeSelectView(spe: List<String> = listSpe, onSpecialityClick: (Int) -> Unit)
                     .padding(6.dp)
                     .fillMaxWidth(0.95f)
                     .clickable {
-                        onSpecialityClick(index)
+                        onSpecialityClick(index + 1)
                     }
             ) {
                 Text(
@@ -155,6 +181,30 @@ fun SemSelectView(sem: Int = 6, onSemesterClick: (Int) -> Unit) {
                     text = "Semestre ${it + 1}",
                     modifier = Modifier
                         .padding(12.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun DisplaySubjects(unites : List<UniteEnseignement>) {
+    LazyColumn {
+        items(unites) { ue ->
+
+            Text(
+                text = ue.name,
+                fontSize = 24.sp,
+                color = Color.DarkGray,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+            )
+
+            ue.modules.forEach { subject ->
+                Text(
+                    text = subject.name,
+                    fontSize = 20.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(start = 20.dp)
                 )
             }
         }
