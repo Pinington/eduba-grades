@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.log
@@ -196,7 +197,7 @@ fun DisplaySubjects(unites : List<UniteEnseignement>) {
                 text = ue.name,
                 fontSize = 24.sp,
                 color = Color.DarkGray,
-                modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+                modifier = Modifier.padding(start = 12.dp, top = 16.dp)
             )
 
             ue.modules.forEach { subject ->
@@ -204,7 +205,7 @@ fun DisplaySubjects(unites : List<UniteEnseignement>) {
                     text = subject.name,
                     fontSize = 20.sp,
                     color = Color.White,
-                    modifier = Modifier.padding(start = 20.dp)
+                    modifier = Modifier.padding(start = 16.dp, top = 8.dp)
                 )
             }
         }
