@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.math.log
 
 val listSpe : List<String> = listOf(
     // Don't change ordering because enum depends on it
@@ -68,7 +69,7 @@ fun App() {
 
     when (currentScreen) {
         Screen.SPECIALITE -> {
-            SpeView(
+            SpeSelectView(
                 onSpecialityClick = { spe ->
                     currentScreen = Screen.SEMESTRE
                     specialite = Spe.fromInt(spe)
@@ -77,7 +78,7 @@ fun App() {
         }
 
         Screen.SEMESTRE -> {
-            SemView(
+            SemSelectView(
                 onSemesterClick = { sem ->
                     currentScreen = Screen.MATIERES
                     semestre = sem
@@ -92,7 +93,7 @@ fun App() {
 }
 
 @Composable
-fun SpeView(spe: List<String> = listSpe, onSpecialityClick: (Int) -> Unit) {
+fun SpeSelectView(spe: List<String> = listSpe, onSpecialityClick: (Int) -> Unit) {
     LazyColumn (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -118,7 +119,7 @@ fun SpeView(spe: List<String> = listSpe, onSpecialityClick: (Int) -> Unit) {
 }
 
 @Composable
-fun SemView(sem: Int = 6, onSemesterClick: (Int) -> Unit) {
+fun SemSelectView(sem: Int = 6, onSemesterClick: (Int) -> Unit) {
     LazyColumn (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
