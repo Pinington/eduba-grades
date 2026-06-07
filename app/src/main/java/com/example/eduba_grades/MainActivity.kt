@@ -26,6 +26,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -46,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
                         BannerItem()
-                        SpeView()
+                        App()
                     }
                 }
             }
@@ -56,6 +59,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BannerItem() {
+    val myFont = FontFamily(
+        Font(R.font.archivo_black_regular)
+    )
+
     Card(
         shape = RectangleShape,
         colors = CardDefaults.cardColors(
@@ -67,6 +74,7 @@ fun BannerItem() {
         Text(
             text = "Eduba",
             fontSize = 24.sp,
+            fontFamily = myFont,
             color = Color.White,
             modifier = Modifier
                 .padding(20.dp, 50.dp, 20.dp, 20.dp)
