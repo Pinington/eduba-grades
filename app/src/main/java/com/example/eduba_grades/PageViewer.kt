@@ -6,13 +6,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,6 +27,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -214,78 +219,104 @@ fun SemSelectView(sem: Int = 6, onSemesterClick: (Int) -> Unit) {
 fun DisplaySubjects(unites : List<UniteEnseignement>) {
     val gradeStates = remember { mutableStateMapOf<String, String>() }
 
-    LazyColumn (
+    Column (
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 60.dp)
+        modifier = Modifier.fillMaxSize()
     ) {
-        items(unites) { ue ->
+        LazyColumn (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .padding(bottom = 10.dp)
+        ) {
+            items(unites) { ue ->
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp)
-            ) {
-                Text(
-                    text = ue.name,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
+                Box(
                     modifier = Modifier
-                        .padding(10.dp, 5.dp)
                         .fillMaxWidth()
-                        .height(40.dp)
-                )
-            }
-
-
-            ue.modules.forEachIndexed { index, subject ->
-
-                val color = if (index % 2 == 0) Color.Gray else Color.DarkGray
-
-                val key = subject.name
-                val gradeQuery = gradeStates[key] ?: ""
-
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(20.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.95F)
-                        .background(color)
-                        .padding(6.dp)
+                        .padding(top = 30.dp)
                 ) {
                     Text(
-                        text = subject.name,
-                        fontSize = 20.sp,
+                        text = ue.name,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
                         color = Color.White,
-                        lineHeight = 36.sp
-                    )
-
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    BasicTextField(
-                        value = gradeQuery,
-                        onValueChange = { newValue ->
-                            if (newValue.all { it.isDigit() }) {
-                                gradeStates[key] = newValue
-                            }
-                        },
-                        cursorBrush = SolidColor(Color.White),
-                        singleLine = true,
-                        textStyle = TextStyle(fontSize = 20.sp, color = Color.White, textAlign = TextAlign.Center),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier
-                            .width(36.dp)
-                            .height(34.dp)
-                            .background(Color.hsl(0.1F, 0.1F, 0.08F, 0.3F))
-                            .padding(6.dp)
+                            .padding(10.dp, 5.dp)
+                            .fillMaxWidth()
+                            .height(40.dp)
                     )
                 }
+
+
+                ue.modules.forEachIndexed { index, subject ->
+
+                    val color = if (index % 2 == 0) Color.Gray else Color.DarkGray
+
+                    val key = subject.name
+                    val gradeQuery = gradeStates[key] ?: ""
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(20.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.95F)
+                            .background(color)
+                            .padding(6.dp)
+                    ) {
+                        Text(
+                            text = subject.name,
+                            fontSize = 20.sp,
+                            color = Color.White,
+                            lineHeight = 36.sp
+                        )
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        BasicTextField(
+                            value = gradeQuery,
+                            onValueChange = { newValue ->
+                                if (newValue.all { it.isDigit() }) {
+                                    gradeStates[key] = newValue
+                                }
+                            },
+                            cursorBrush = SolidColor(Color.White),
+                            singleLine = true,
+                            textStyle = TextStyle(fontSize = 20.sp, color = Color.White, textAlign = TextAlign.Center),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier
+                                .width(36.dp)
+                                .height(34.dp)
+                                .background(Color.hsl(0.1F, 0.1F, 0.08F, 0.3F))
+                                .padding(6.dp)
+                        )
+                    }
+                }
             }
+
+            item {
+                Spacer(modifier = Modifier.height(80.dp))
+            }
+
         }
 
-        item {
-            Spacer(modifier = Modifier.height(80.dp))
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xEE10EB4B)
+            ),
+            modifier = Modifier.fillMaxWidth(0.95f).navigationBarsPadding()
+        ) {
+            Text(
+                text = "CALCUL",
+                letterSpacing = 4.sp,
+                textAlign = TextAlign.Center,
+                color = Color.White,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
         }
     }
+
 }
