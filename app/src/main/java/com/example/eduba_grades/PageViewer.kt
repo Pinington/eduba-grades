@@ -311,6 +311,7 @@ fun DisplaySubjects(unites : List<UniteEnseignement>) {
                 text = "CALCUL",
                 letterSpacing = 4.sp,
                 textAlign = TextAlign.Center,
+                fontWeight = FontWeight.W600,
                 color = Color.White,
                 modifier = Modifier
                     .fillMaxWidth()
