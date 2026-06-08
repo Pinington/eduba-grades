@@ -25,6 +25,24 @@
           { "name": "SGBD", "value": 28 },
           { "name": "BI", "value": 34 }
         ]
+      },
+      {
+        "name": "Reseaux et Cybersecurite",
+        "modules": [
+          { "name": "Configuration de base", "value": 22 },
+          { "name": "Routage et commutation", "value": 36.5 },
+          { "name": "Intro Cyber-Securite", "value": 10 }
+        ]
+      },
+      {
+        "name": "CHES",
+        "modules": [
+          { "name": "Gestion de projet", "value": 20 },
+          { "name": "Economie", "value": 20 },
+          { "name": "Savoir Communiquer", "value": 12 },
+          { "name": "DDRS - Impacts", "value": 28 },
+          { "name": "IA Fiabilite info", "value": 4 }
+        ]
       }
     ],
 
@@ -54,6 +72,24 @@
         "modules": [
           { "name": "SGBD", "value": 28 },
           { "name": "BI", "value": 34 }
+        ]
+      },
+      {
+        "name": "Reseaux et Cybersecurite",
+        "modules": [
+          { "name": "Configuration de base", "value": 22 },
+          { "name": "Routage et commutation", "value": 36.5 },
+          { "name": "Intro Cyber-Securite", "value": 10 }
+        ]
+      },
+      {
+        "name": "CHES",
+        "modules": [
+          { "name": "Gestion de projet", "value": 20 },
+          { "name": "Economie", "value": 20 },
+          { "name": "Savoir Communiquer", "value": 12 },
+          { "name": "DDRS - Impacts", "value": 28 },
+          { "name": "IA Fiabilite info", "value": 4 }
         ]
       }
     ],
