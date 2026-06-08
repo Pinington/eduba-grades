@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Module(
     val name: String,
-    val value: Int
+    val value: Double
 )
 @Serializable
 data class UniteEnseignement(
